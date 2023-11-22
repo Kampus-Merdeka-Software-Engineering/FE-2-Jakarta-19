@@ -39,3 +39,10 @@ var swiper = new Swiper(".review-slider", {
         }
     },
 });
+
+function animateText(element) {
+    element.classList.add('clicked');
+    setTimeout(function () {
+        element.classList.remove('clicked');
+    }, 500);
+}
