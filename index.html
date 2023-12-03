@@ -229,12 +229,12 @@
     <section class="book" id="book">
         <h1 class="heading">booking <span>reserve a table</span></h1>
 
-        <form action="">
-            <input type="text" placeholder="Name" class="box">
-            <input type="email" placeholder="Email" class="box">
-            <input type="number" placeholder="Number" class="box">
-            <textarea name="" placeholder="Message" class="box" id="" cols="30" rows="10"></textarea>
-            <input type="submit" value="send message" class="btn">
+        <form action="" onsubmit="send_api(event)">
+            <input type="text" placeholder="Name" name="name" class="box">
+            <input type="email" placeholder="Email" name="email" class="box">
+            <input type="number" placeholder="Number" name="number" class="box">
+            <textarea placeholder="Message" name="message" class="box" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="send message" class="btn" id="send_message">
         </form>
     </section>
 
@@ -288,7 +288,40 @@
 
     <!-- Custom JS File Link  -->
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let url={
+            dev: "http://localhost:3000/tabel",
+            prod: "https://magenta-caiman-boot.cyclic.app/tabel"
+        }
+        function send_api(event)
+        {
+            event.preventDefault()
+             const btn = document.getElementById("send_message")
+            const name = document.querySelector("input[name='name']").value
+            const email = document.querySelector("input[name='email']").value
+            const number = document.querySelector("input[name='number']").value
+            const message = document.querySelector("textarea[name='message']").value
+            let jsonData = {name,email,number,message}
+             btn.value = 'Loading'
 
+            axios.post(url.prod, jsonData, {
+            headers: {
+                'Content-Type': 'application/json',  
+            }
+            })
+            .then(response => {
+                alert("Successfully")
+                console.log('API response:', response.data);
+            })
+            .catch(error => {
+                alert("Gagal")
+                console.error('Error:', error);
+            }).finally(()=>{
+                btn.value = 'Send Message..'
+            });
+        }
+    </script>
 </body>
 
 </html>
