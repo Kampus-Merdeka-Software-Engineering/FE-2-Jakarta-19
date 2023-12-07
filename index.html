@@ -27,6 +27,8 @@
 
         <a href="#" class="logo">Caffeine<i class="fas fa-mug-hot"></i></a>
 
+        <button onclick="test()">test</button>
+
         <nav class="navbar">
             <a href="#home">home</a>
             <a href="#about">about</a>
@@ -237,6 +239,61 @@
         </form>
     </section>
 
+    <br>
+    <br>
+
+    <!-- Tabel -->
+    <section class="menu" id="menu">
+        <h1 class="heading"> <span>tabel booking</span></h1>
+        <br>
+        <br>
+
+        <div class="box-container">
+            <a href="#" class="box">
+                <div class="content">
+                    <p>Nama  : </p>
+                    <p>Email : </p>
+                    <p>Number : </p>
+                    <p>Message :</p>
+                    <span></span>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <div class="content">
+                    <p>Nama  : </p>
+                    <p>Email : </p>
+                    <p>Number : </p>
+                    <p>Message :</p>
+                    <span></span>
+                </div>
+            </a>
+                  
+
+            <a href="#" class="box">
+                <div class="content">
+                    <p>Nama  : </p>
+                    <p>Email : </p>
+                    <p>Number : </p>
+                    <p>Message :</p>
+                    <span></span>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <div class="content">
+                    <p>Nama  : </p>
+                    <p>Email : </p>
+                    <p>Number : </p>
+                    <p>Message :</p>
+                    <span></span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+
 
     <!-- FOOTER -->
     <section class="footer">
@@ -289,6 +346,12 @@
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        function test() {
+            fetch("https://be-2-jakarta-19-production-570f.up.railway.app/tabel")
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.log(error));
+        }
         let url={
             dev: "http://localhost:3000/tabel",
             prod: "https://be-2-jakarta-19-production-570f.up.railway.app/tabel"
