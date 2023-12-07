@@ -383,6 +383,57 @@
                 btn.value = 'Send Message..'
             });
         }
+
+         // Function to fetch data from the API and update the booking table
+      function fetchBookingData() {
+        fetch("https://be-2-jakarta-19-production-570f.up.railway.app/tabel")
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            // Call a function to update the booking table with the received data
+            updateBookingTable(data);
+          })
+          .catch((error) => console.log(error));
+      }
+
+      // Function to update the booking table based on the data received from the API
+      function updateBookingTable(jsonResponse) {
+        // Get the container where booking data will be inserted
+        const bookingContainer = document.getElementById("booking-container");
+
+        // Clear the container before inserting new data
+        bookingContainer.innerHTML = "";
+
+        // Iterate through the data and create a box for each booking
+        jsonResponse.data.forEach((booking) => {
+          const bookingBox = document.createElement("a");
+          bookingBox.classList.add("box");
+
+          const contentDiv = document.createElement("div");
+          contentDiv.classList.add("content");
+
+          // Add booking details to the content div
+          contentDiv.innerHTML = `
+            <p>Nama: ${booking.name}</p>
+            <p>Email: ${booking.email}</p>
+            <p>Number: ${booking.number}</p>
+            <p>Message: ${booking.message}</p>
+            <span>Booking ID: ${booking.id}</span>
+          `;
+
+          // Append the content div to the booking box
+          bookingBox.appendChild(contentDiv);
+
+          // Append the booking box to the container
+          bookingContainer.appendChild(bookingBox);
+        });
+      }
+
+      // Call the fetchBookingData function when the page loads or whenever needed
+      document.addEventListener("DOMContentLoaded", fetchBookingData);
+    </script>
+
+
     </script>
 </body>
 
