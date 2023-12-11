@@ -2,7 +2,7 @@
 
 # CAFFEINE - LET'S GO CAFFEIN NOW!
 
-![Caffeine Logo](./image/coffee.png)
+![Caffeine Logo](./image/letsgo.png)
 
 ## About
 
